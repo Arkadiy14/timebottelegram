@@ -1,4 +1,4 @@
 {
- "require": {
+ "require": ^7.0.0 {
  }
 }
