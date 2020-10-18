@@ -1,5 +1,8 @@
 {
     "require": {
         "cocur/slugify": "^4.0"
+        "php": ">=7.3.*"
+        "apache": ">=2.4.*"
+        "nginx": "1.18.0"
     }
 }
