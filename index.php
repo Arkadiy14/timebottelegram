@@ -57,5 +57,5 @@ if(!empty($result)) {
 }
 }
 
-sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => 'ok']);
+sendRequest('sendMessage', urlencode(['chat_id' => $chat_id, 'text' => 'ok']));
 ?>
