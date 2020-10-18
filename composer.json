@@ -1,5 +1,6 @@
 {
     "require": {
         "cocur/slugify": "^4.0"
+        "php": ">=7.0"
     }
 }
