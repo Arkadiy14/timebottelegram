@@ -25,8 +25,8 @@ if($text == '/start') {
 Наш бот понимает и русский, и украинский язык)';  
 	sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => $date]);
 }else {
-	$pieces = explode(", ", $text);
-    $city = $pieces[1];
+$pieces = explode(", ", $text);
+$city = $pieces[1];
 
 
 $link = mysqli_connect("localhost", "sammy", "Password_pw9", "Time");
@@ -52,7 +52,7 @@ if(!empty($result)) {
     sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => $date]);
 }elseif(empty($result)) {
     $date = 'Попробуйте ещё раз!';
-    sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => $date]);
+    sendRequest('sendMessage', ['chat_id' => $pieces[1], 'text' => $date]);
 }
 }
 
