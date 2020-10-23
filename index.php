@@ -28,7 +28,6 @@ if($text == '/start') {
 $pieces = explode(", ", $text);
 $city = $pieces[1];
 
-
 $link = mysqli_connect("localhost", "sammy", "Password_pw9", "Time");
 mysqli_query($link, "SET NAMES utf8");
 
@@ -44,7 +43,7 @@ $query = mysqli_query($link, "SELECT `name` FROM `Australia` WHERE `variant1` = 
 $query = mysqli_query($link, "SELECT `name` FROM `Europe` WHERE `variant1` = '$city' OR `variant2` = '$city'");
 }
 
-$result = mysqli_fetch_row($query);
+$result = mysqli_fetch_array($query);
 
 if(!empty($result)) {
     date_default_timezone_set($result[0]);
