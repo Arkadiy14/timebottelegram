@@ -2,7 +2,7 @@
 const TOKEN = '1123292956:AAHKqRlNzGzoh-V7bieKo7rk2gwDRIRMMZQ';
 const BASE_URL = 'https://api.telegram.org/bot'.TOKEN.'/';
 
-$update = json_decode(file_get_contents('php://input'), JSON_OBJECT_AS_ARRAY);
+$updates = json_decode(file_get_contents('php://input'), JSON_OBJECT_AS_ARRAY);
 
 function sendRequest($method, $params = []) {
 
@@ -15,9 +15,10 @@ function sendRequest($method, $params = []) {
 	return json_decode(file_get_contents($url), JSON_OBJECT_AS_ARRAY);
 }
 
-
-$chat_id = $update['message']['chat']['id'];
+foreach($updates as $update) {
+	$chat_id = $update['message']['chat']['id'];
 $text = $update['message']['text'];
+}
 
 if($text == '/start') {
 	$date = 'Введите название части света и столицы. 
