@@ -52,7 +52,7 @@ if(!empty($result)) {
     sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => $date]);
 }elseif(empty($result)) {
     $date = 'Попробуйте ещё раз!';
-    sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => $date]);
+    sendRequest('sendMessage', ['chat_id' => $pieces[1], 'text' => $date]);
 }
 }
 
