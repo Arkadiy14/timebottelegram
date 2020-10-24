@@ -2,8 +2,6 @@
 const TOKEN = '1123292956:AAHKqRlNzGzoh-V7bieKo7rk2gwDRIRMMZQ';
 const BASE_URL = 'https://api.telegram.org/bot'.TOKEN.'/';
 
-$update = json_decode(file_get_contents('php://input'), JSON_OBJECT_AS_ARRAY);
-
 function sendRequest($method, $params = []) {
 
 	if(!empty($params)) {
@@ -14,6 +12,8 @@ function sendRequest($method, $params = []) {
 
 	return json_decode(file_get_contents($url), JSON_OBJECT_AS_ARRAY);
 }
+
+$update = json_decode(file_get_contents('php://input'), JSON_OBJECT_AS_ARRAY);
 
 $chat_id = $update['message']['chat']['id'];
 $text = $update['message']['text'];
@@ -31,7 +31,7 @@ $city = $pieces[1];
 $link = mysqli_connect("localhost", "sammy", "Password_pw9", "Time");
 mysqli_query($link, "SET NAMES utf8");
 
-if($pieces[0] == 'Африка') {
+/*if($pieces[0] == 'Африка') {
 $query = mysqli_query($link, "SELECT `name` FROM `Africa` WHERE `variant1` = '$city' OR `variant2` = '$city'");
 }elseif($pieces[0] == 'Америка') {
 $query = mysqli_query($link, "SELECT `name` FROM `America` WHERE `variant1` = '$city' OR `variant2` = '$city'");
@@ -41,8 +41,9 @@ $query = mysqli_query($link, "SELECT `name` FROM `Asia` WHERE `variant1` = '$cit
 $query = mysqli_query($link, "SELECT `name` FROM `Australia` WHERE `variant1` = '$city' OR `variant2` = '$city'");
 }elseif($pieces[0] == 'Европа' || $pieces[0] == 'Європа') {
 $query = mysqli_query($link, "SELECT `name` FROM `Europe` WHERE `variant1` = '$city' OR `variant2` = '$city'");
-}
+}*/
 
+$query = mysqli_query($link, "SELECT `name` FROM `Europe` WHERE `variant1` = 'Берлин`");
 $result = mysqli_fetch_array($query);
 
 if(!empty($result)) {
