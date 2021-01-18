@@ -19,31 +19,16 @@ $chat_id = $update['message']['chat']['id'];
 $text = $update['message']['text'];
 
 if($text == '/start') {
-	$date = 'Введите название части света и столицы. 
-Пример: Европа, Берлин
-Важно: просим Вас писать через запятую и с заглавных букв! Спасибо)
+	$date = 'Введите название столицы. 
+Пример: Берлин
+Важно: заглавных букв и без ошибок! Спасибо)
 Наш бот понимает и русский, и украинский язык)';  
 	sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => $date]);
 }else {
-$pieces = explode(", ", $text);
-$city = $pieces[1];
+$link = pg_connect("host=localhost dbname=Time user=arkadiy password=140206ark");
+$query = pg_query($link, "SELECT `name` FROM `europe` WHERE `variant1` = '$text' OR `variant2` = '$text'");
 
-$link = mysqli_connect("localhost", "sammy", "Password_pw9", "Time");
-mysqli_query($link, "SET NAMES utf8");
-
-if($pieces[0] == 'Африка') {
-$query = mysqli_query($link, "SELECT `name` FROM `Africa` WHERE `variant1` = '$city' OR `variant2` = '$city'");
-}elseif($pieces[0] == 'Америка') {
-$query = mysqli_query($link, "SELECT `name` FROM `America` WHERE `variant1` = '$city' OR `variant2` = '$city'");
-}elseif($pieces[0] == 'Азия' || $pieces[0] == 'Азія') {
-$query = mysqli_query($link, "SELECT `name` FROM `Asia` WHERE `variant1` = '$city' OR `variant2` = '$city'");
-}elseif($pieces[0] == 'Австралия' || $pieces[0] == 'Австралія') {
-$query = mysqli_query($link, "SELECT `name` FROM `Australia` WHERE `variant1` = '$city' OR `variant2` = '$city'");
-}elseif($pieces[0] == 'Европа' || $pieces[0] == 'Європа') {
-$query = mysqli_query($link, "SELECT `name` FROM `Europe` WHERE `variant1` = '$city' OR `variant2` = '$city'");
-}
-
-$result = mysqli_fetch_array($query);
+$result = pg_fetch_array($query);
 
 if(!empty($result)) {
     date_default_timezone_set($result[0]);
@@ -54,5 +39,4 @@ if(!empty($result)) {
     sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => $date]);
 }
 }
-
 ?>
