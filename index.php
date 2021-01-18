@@ -25,7 +25,7 @@ if($text == '/start') {
 Наш бот понимает и русский, и украинский язык)';  
 	sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => $date]);
 }else {
-$link = pg_connect("host=localhost dbname=Time user=arkadiy password=140206ark");
+$link = pg_connect("host=localhost dbname=time user=postgres password=140206ark");
 $query = pg_query($link, "SELECT `name` FROM `europe` WHERE `variant1` = '$text' OR `variant2` = '$text'");
 
 $result = pg_fetch_array($query);
