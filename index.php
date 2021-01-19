@@ -29,7 +29,7 @@ $host = "host=127.0.0.1";
 $port = "port=5432";
 $dbname = "dbname=Time";
 $user = "user=postgres password=140206ark";
-$link = pg_connect("$host $port $dbname $user")
+$link = pg_connect("$dbname")
 or die('Не удалось соединиться: ' . pg_last_error());
 
 $query = pg_query($link, "SELECT `name` FROM `europe` WHERE `variant1` = '$text' OR `variant2` = '$text'");
