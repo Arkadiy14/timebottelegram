@@ -25,12 +25,12 @@ if($text == '/start') {
 Наш бот понимает и русский, и украинский язык)';  
 	sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => $date]);
 }else {
-/*$link = pg_connect("host=127.0.0.1 port=5432 dbname=Time user=postgres password=140206ark")
+$link = pg_connect("host=127.0.0.1 port=5432 dbname=Time user=postgres password=140206ark")
 or die('Не удалось соединиться: ' . pg_last_error());
 
 $query = pg_query($link, "SELECT `name` FROM `europe` WHERE `variant1` = '$text' OR `variant2` = '$text'");
 
-$result = pg_fetch_array($query);*/
+$result = pg_fetch_array($query);
 
 if(!empty($result)) {
     date_default_timezone_set($result[0]);
