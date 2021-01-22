@@ -1,6 +1,6 @@
 <?php
-const TOKEN = '1123292956:AAHKqRlNzGzoh-V7bieKo7rk2gwDRIRMMZQ';
-const BASE_URL = 'https://api.telegram.org/bot'.TOKEN.'/';
+const TOKEN = "1123292956:AAHKqRlNzGzoh-V7bieKo7rk2gwDRIRMMZQ";
+const BASE_URL = "https://api.telegram.org/bot".TOKEN."/";
 
 function sendRequest($method, $params = []) {
 
@@ -10,7 +10,16 @@ function sendRequest($method, $params = []) {
 		$url = BASE_URL.$method;
 	}
 
-	return json_decode(file_get_contents($url), JSON_OBJECT_AS_ARRAY);
+	$opts = array('http' =>
+    array(
+        'method' => 'GET',
+        'max_redirects' => '0',
+        'ignore_errors' => '1',        
+    )
+);
+	$context = stream_context_create($opts);
+	$stream = fopen($url, 'r', false, $context);
+	return json_decode($url, JSON_OBJECT_AS_ARRAY);
 }
 
 $update = json_decode(file_get_contents('php://input'), JSON_OBJECT_AS_ARRAY);
