@@ -40,7 +40,7 @@ $dbname = "dbname=Time";
 $user = "user=postgres password=140206ark";
 $link = pg_connect("$host $port $dbname $user") or die('Не удалось соединиться: ' . pg_last_error());
 
-$query = pg_query($link, 'SELECT `name` FROM `europe` WHERE variant1 = '.$text.' OR variant2 = '.$text);
+$query = pg_query($link, 'SELECT name FROM europe WHERE variant1 = '.$text.' OR variant2 = '.$text);
 
 $result = pg_fetch_array($query);
 
