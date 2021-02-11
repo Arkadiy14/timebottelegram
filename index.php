@@ -37,7 +37,7 @@ if($text == '/start') {
 $host = "host=localhost";
 $port = "port=5432";
 $dbname = "dbname=Time";
-$user = "user=postgres password=140206ark";
+$user = "user=arkadiy password=140206ark";
 $link = pg_connect("$port $dbname $user") or die('Не удалось соединиться: ' . pg_last_error());
 $query = pg_query($link, "SELECT name FROM europe WHERE variant1 = $text OR variant2 = $text");
 
