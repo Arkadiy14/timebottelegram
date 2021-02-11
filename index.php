@@ -28,10 +28,10 @@ $chat_id = $update['message']['chat']['id'];
 $text = $update['message']['text'];
 
 if($text == '/start') {
-	$date = 'Введите название столицы. 
+	$date = 'aaaa'/*'Введите название столицы. 
 Пример: Берлин
 Важно: просим Вас писать с заглавных букв и без ошибок! Спасибо)
-Наш бот понимает и русский, и украинский язык)';  
+Наш бот понимает и русский, и украинский язык)'*/;  
 	sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => $date]);
 }else {
 $host = "host=localhost";
