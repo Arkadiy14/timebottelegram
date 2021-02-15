@@ -34,7 +34,7 @@ if($text == '/start') {
 Наш бот понимает и русский, и украинский язык)';  
 	sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => $date]);
 }else {
-$host = "host=127.0.0.1";
+$host = "host=127.0.0.1/32";
 $port = "port=5432";
 $dbname = "dbname=Time";
 $user = "user=arkadiy password=140206ark";
