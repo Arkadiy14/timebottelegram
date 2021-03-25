@@ -10,16 +10,7 @@ function sendRequest($method, $params = []) {
 		$url = BASE_URL.$method;
 	}
 
-	$opts = array('http' =>
-    array(
-        'method' => 'GET',
-        'max_redirects' => '0',
-        'ignore_errors' => '1',        
-    )
-);
-	$context = stream_context_create($opts);
-	$stream = fopen($url, 'r', false, $context);
-	return json_decode($url, JSON_OBJECT_AS_ARRAY);
+	return json_decode(file_get_contents($url), JSON_OBJECT_AS_ARRAY);
 }
 
 $update = json_decode(file_get_contents('php://input'), JSON_OBJECT_AS_ARRAY);
