@@ -27,7 +27,7 @@ if($text == '/start') {
 }else {
 $link = pg_connect("dbname=d84561rrf5j5mm host=ec2-54-247-158-179.eu-west-1.compute.amazonaws.com port=5432 user=mcctaiuibipjxx password=22a458c50b808a730e4c261522243c7aef689e1dec8f6bcdcf6dce6516275bc2 sslmode=require"
 );
-$query = pg_query($link, "SELECT name FROM europe WHERE variant1 = $text OR variant2 = $text");
+$query = pg_query($link, "SELECT name FROM europe WHERE variant1 = '{$text}' OR variant2 = '{$text}'");
 $result = pg_fetch_array($query);
 
 if(!empty($result)) {
