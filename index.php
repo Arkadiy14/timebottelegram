@@ -34,13 +34,9 @@ if($text == '/start') {
 Наш бот понимает и русский, и украинский язык)';  
 	sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => $date]);
 }else {
-$host = "host=127.0.0.1";
-$port = "port=5432";
-$dbname = "dbname=Time";
-$user = "user=arkadiy password=140206ark";
-$link = pg_connect("$dbname $user") or die('Не удалось соединиться: ' . pg_last_error());
-$query = pg_query($link, "SELECT name FROM europe WHERE variant1 = $text OR variant2 = $text");
-
+$link = pg_connect("dbname=d84561rrf5j5mm host=ec2-54-247-158-179.eu-west-1.compute.amazonaws.com port=5432 user=mcctaiuibipjxx password=22a458c50b808a730e4c261522243c7aef689e1dec8f6bcdcf6dce6516275bc2 sslmode=require"
+);
+/*$query = pg_query($link, "SELECT name FROM europe WHERE variant1 = $text OR variant2 = $text");
 $result = pg_fetch_array($query);
 
 if(!empty($result)) {
@@ -51,5 +47,5 @@ if(!empty($result)) {
     $date = 'Попробуйте ещё раз!';
     sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => $date]);
 }
-}
+}*/
 ?>
