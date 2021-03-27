@@ -1,5 +1,5 @@
 <?php
-const TOKEN = "1123292956:AAHKqRlNzGzoh-V7bieKo7rk2gwDRIRMMZQ";
+const TOKEN = "YOUR TOKEN";
 const BASE_URL = "https://api.telegram.org/bot".TOKEN."/";
 
 function sendRequest($method, $params = []) {
@@ -25,8 +25,7 @@ if($text == '/start') {
 Наш бот понимает и русский, и украинский язык)';  
 	sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => $date]);
 }else {
-$link = pg_connect("dbname=d84561rrf5j5mm host=ec2-54-247-158-179.eu-west-1.compute.amazonaws.com port=5432 user=mcctaiuibipjxx password=22a458c50b808a730e4c261522243c7aef689e1dec8f6bcdcf6dce6516275bc2 sslmode=require"
-);
+$link = pg_connect("CONNECT");
 $query = pg_query($link, "SELECT name FROM europe WHERE variant1 = '{$text}' OR variant2 = '{$text}'");
 $result = pg_fetch_array($query);
 
