@@ -27,10 +27,10 @@ if($text == '/start') {
 }else {
 $link = pg_connect("CONNECT");
 $query = pg_query($link, "SELECT name FROM europe WHERE variant1 = '{$text}' OR variant2 = '{$text}'");
-$result = pg_fetch_array($query);
+$result = pg_fetch_result($query, 0, 0);
 
 if(!empty($result)) {
-    date_default_timezone_set($result[0]);
+    date_default_timezone_set($result);
     $date = date("H:i:s, d.m.Y");
     sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => $date]);
 }elseif(empty($result)) {
