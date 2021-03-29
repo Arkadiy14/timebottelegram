@@ -6,7 +6,7 @@ If you want to use this code for yourself, you should add your token here:
 ```php
 const TOKEN = "YOUR TOKEN";
 ```
-Then you have to use your own database:
+Then you have to use your own database, where you have the table "europe" with some with two variants of the names of capitals:
 ```php
 $link = pg_connect("CONNECT");
 ```
